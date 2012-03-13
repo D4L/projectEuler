@@ -17,5 +17,3 @@
 # Ignore vim temps
 
 *.swp
-
-config/database.yml
