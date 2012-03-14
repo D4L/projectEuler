@@ -2,7 +2,8 @@ This is ProjectEuler.
 =====================
 
 -n a site which hosts challenging math/programming problems. [Project Euler](http://projecteuler.net).
-I've done some Project Euler Problems beforehand but my solutions got deleted at the same time I reformatted my computer. Now, I get to do them again!
+
+I've done some Project Euler problems beforehand but my solutions got deleted at the same time I reformatted my computer. Now, I get to do them again!
 
 How to View
 -----------
