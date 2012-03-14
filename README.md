@@ -8,9 +8,10 @@ I've done some Project Euler problems beforehand but my solutions got deleted at
 How to View
 -----------
 
-*   Clone the project `git clone git@github.com:D4L/projectEuler.git`
-*   cd into the project `cd projectEuler`
-*   `rake`
+1.  Clone the project `git clone git@github.com:D4L/projectEuler.git`
+2.  cd into the project `cd projectEuler`
+3.  *   Run `rake -T` to get a list of all available commands
+    *   Quick tip, `rake specific:solution` to get a specific solution to one of the problems
 
 Authors
 -------
