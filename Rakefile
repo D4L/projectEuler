@@ -73,8 +73,8 @@ namespace "specific" do
       arr.each do |name|
         print "#{name} "
       end
+      print "\n"
     end
-    print "\n"
   end
 
   desc "Get the entire result of a specific solution"

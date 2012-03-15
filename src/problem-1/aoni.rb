@@ -10,10 +10,10 @@ def aoni
     result += i * 3 if i % 5 != 0
     i += 1
   end
-  i = 1
-  while i * 5 <= 1000
-    result += (4 * i + 6) * 5
-    i += 4
+  i = 0
+  while i * 5 < 1000
+    result += (5 * i + 10) * 5
+    i += 5
   end
   result
 end
