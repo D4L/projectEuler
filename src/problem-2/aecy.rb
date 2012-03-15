@@ -1,7 +1,5 @@
 public
 
-require 'fibGetSingle'
-
 def aecy
   # note that every 3rd value is even
   # 1. odd + even = odd

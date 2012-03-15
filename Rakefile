@@ -3,6 +3,9 @@ $LOAD_PATH << './src'
 Dir.glob("./src/problem-*/*.rb").each do |srcfile|
   require srcfile
 end
+Dir.glob("./lib/*.rb").each do |libfile|
+  require libfile
+end
 
 require 'testtools'
 namespace "all" do
@@ -12,7 +15,7 @@ namespace "all" do
       puts "Problem " + dir.gsub(/src\/problem-/, '')
       Dir.glob(File.join(dir, "*.rb")) do |file|
         puts "\tIn Ruby: (#{file})"
-        puts "\tTime taken: " +  gettime(File.basename(file, ".rb").to_sym.to_proc).to_s
+        puts "\tTime taken: " +  "%e" % gettime(File.basename(file, ".rb").to_sym.to_proc).to_s
       end
     end
   end
@@ -24,7 +27,7 @@ namespace "all" do
       Dir.glob(File.join(dir, "*.rb")) do |file|
         puts "\n\tIn Ruby: (#{file})"
         result = gettime(File.basename(file, ".rb").to_sym.to_proc, "full")
-        puts "\tTime taken: " + result[0].to_s
+        puts "\tTime taken: " + "%e" % result[0].to_s
         puts "\tComputed result: " + result[1].to_s
       end
     end
@@ -89,7 +92,7 @@ namespace "specific" do
       Dir.glob(File.join(dir, "*.rb")) do |file|
         puts "\n\tIn Ruby: (#{file})"
         result = gettime(File.basename(file, ".rb").to_sym.to_proc, "full")
-        puts "\tTime taken: " + result[0].to_s
+        puts "\tTime taken: " + "%e" % result[0].to_s
         puts "\tComputed result: " + result[1].to_s
       end
     end
