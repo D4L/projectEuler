@@ -1,0 +1,47 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+aaeo	src/problem-4/aaeo.rb	/^def aaeo$/;"	f
+aakk	src/problem-4/aakk.rb	/^def aakk$/;"	f
+aalr	src/problem-4/aalr.rb	/^def aalr$/;"	f
+aare	src/problem-4/aare.rb	/^def aare$/;"	f
+aecy	src/problem-2/aecy.rb	/^def aecy$/;"	f
+aeia	src/problem-2/aeia.rb	/^def aeia$/;"	f
+aele	src/problem-2/aele.rb	/^def aele$/;"	f
+aesc	src/problem-2/aesc.rb	/^def aesc$/;"	f
+aild	src/problem-8/aild.rb	/^def aild$/;"	f
+airl	src/problem-8/airl.rb	/^def airl$/;"	f
+aixx	src/problem-8/aixx.rb	/^def aixx$/;"	f
+aoet	src/problem-1/aoet.rb	/^def aoet$/;"	f
+aoic	src/problem-1/aoic.rb	/^def aoic$/;"	f
+aola	src/problem-1/aola.rb	/^def aola$/;"	f
+aoni	src/problem-1/aoni.rb	/^def aoni$/;"	f
+aour	src/problem-1/aour.rb	/^def aour$/;"	f
+arithmeticSequence	lib/arithmeticSequence.rb	/^def arithmeticSequence (n, b, e)$/;"	f
+arrPrimeFactors	lib/arrPrimeFactors.rb	/^def arrPrimeFactors (n)$/;"	f
+arrPrimeFactors2	lib/arrPrimeFactors2.rb	/^def arrPrimeFactors2 (n)$/;"	f
+aust	src/problem-7/aust.rb	/^def aust$/;"	f
+fibGetSingle	lib/fibGetSingle.rb	/^def fibGetSingle (n)$/;"	f
+fibGetSingle2	lib/fibGetSingle2.rb	/^def fibGetSingle2 (n)$/;"	f
+fibGetSingle3	lib/fibGetSingle3.rb	/^def fibGetSingle3 (n)$/;"	f
+gettime	lib/testtools.rb	/^def gettime(program, *params)$/;"	f
+hnat	src/problem-42/hnat.rb	/^def hnat$/;"	f
+hnke	src/problem-42/hnke.rb	/^def hnke$/;"	f
+ioct	src/problem-10/ioct.rb	/^def ioct$/;"	f
+oacl	src/problem-6/oacl.rb	/^def oacl$/;"	f
+oacz	src/problem-6/oacz.rb	/^def oacz$/;"	f
+oakc	src/problem-6/oakc.rb	/^def oakc$/;"	f
+oalf	src/problem-6/oalf.rb	/^def oalf$/;"	f
+oohh	src/problem-9/oohh.rb	/^def oohh$/;"	f
+ookc	src/problem-9/ookc.rb	/^def ookc$/;"	f
+oomk	src/problem-9/oomk.rb	/^def oomk$/;"	f
+ouoo	src/problem-3/ouoo.rb	/^def ouoo$/;"	f
+outs	src/problem-3/outs.rb	/^def outs$/;"	f
+uacc	src/problem-5/uacc.rb	/^def uacc$/;"	f
+uack	src/problem-5/uack.rb	/^def uack$/;"	f
+uacs	src/problem-5/uacs.rb	/^def uacs$/;"	f
+uaio	src/problem-5/uaio.rb	/^def uaio$/;"	f
+uaje	src/problem-5/uaje.rb	/^def uaje$/;"	f
