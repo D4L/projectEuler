@@ -98,4 +98,31 @@ namespace "specific" do
     end
   end
 
+  desc "Creates a new solution with the appropriate files"
+  task :create, :arg1 do |t, args|
+    if args[:arg1].nil?
+      puts "Please retry and use the format create[number]"
+      exit
+    end
+
+    existingRans = Array.new
+    Dir["src/problem-*"].each do |dir|
+      if dir.split('-')[1] == args[:arg1]
+        puts "This solution already exists."
+        exit
+      end
+      existingRans.push File.basename(Dir.glob(File.join(dir, "*.rb"))[0], '.rb')[0,2]
+    end
+
+    puts "Creating problem #{args[:arg1]}"
+    dir = "src/problem-#{args[:arg1]}"
+    Dir.mkdir(dir)
+    code = getRanChar + getRanChar
+    while existingRans.include? code
+      code = getRanChar + getRanChar
+    end
+    code += getRanChar + getRanChar
+    `touch #{File.join(dir, "problem")}`
+    `touch #{File.join(dir, code+ ".rb")}`
+  end
 end

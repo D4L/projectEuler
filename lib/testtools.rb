@@ -8,3 +8,7 @@ def gettime(program, *params)
   end
   timeend
 end
+
+def getRanChar
+    ((Random.rand * 25 + 97).round).chr
+end
