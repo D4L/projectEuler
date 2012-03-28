@@ -1,7 +1,7 @@
 public
 
 def uack
-  # Same as uacs but now let's try to code the process
+  # same as uacc but uses arrPrimeFactor2 instead, it's a slight improvement
   neededMultiples = Array.new
   (1 .. 20).each do |i|
     dupMultiples = Array.new(neededMultiples)
