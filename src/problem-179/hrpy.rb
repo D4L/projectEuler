@@ -5,7 +5,6 @@ def hrpy
   dis = 0
   nex = 0
   (1..10000000).each do |i|
-    p i
     if i % 2 == 0
       dis = 0
       (1..Math.sqrt(i)).each do |n|
