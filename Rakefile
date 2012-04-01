@@ -50,6 +50,16 @@ task :time do
   puts "Time it takes to selection sort a 1000 number array: " + gettime(Proc.new{a=Array.new(1000){|i|Random.rand};def s(a, i, j);t=a[i];a[i]=a[j];a[j]=t;end;def i(a);(0..(a.size-1)).each{|i|l=1;p=0;(i..(a.size-1)).each{|j|p,l=j,a[j] if a[j]<l};s(a,i,p);};end;i(a)}).to_s
 end
 
+desc "You can change this code and test individual peices of code fast"
+task :test do
+  testObject = Proc.new do
+    boolIsBouncyInt(93322)
+  end
+  testResult = gettime(testObject, "full")
+  puts "Time taken: " + "%e" % testResult[0].to_s
+  puts "Computed result: " + testResult[1].to_s
+end
+
 namespace "specific" do
   desc "Find the solution to a specific solution"
   task :solution do
