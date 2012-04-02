@@ -1,8 +1,8 @@
 public
 
 def exce
-  digits = 50
-  exce1(digits,9) + exce2(digits,1)
+  digits = 3
+  2 * exce1(digits,9)
 end
 
 # this should cover all descending numbers
