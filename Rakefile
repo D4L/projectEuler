@@ -53,7 +53,7 @@ end
 desc "You can change this code and test individual peices of code fast"
 task :test do
   testObject = Proc.new do
-    boolIsBouncyInt(93322)
+    boolIsBouncyInt(8420)
   end
   testResult = gettime(testObject, "full")
   puts "Time taken: " + "%e" % testResult[0].to_s

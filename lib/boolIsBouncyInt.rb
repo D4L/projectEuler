@@ -8,7 +8,7 @@ def boolIsBouncyInt i
   numDigits = i.to_s.length
   return false if numDigits < 3 # any number 0-99 is non-bouncy
   sortedNumber = i.to_s.each_char.sort.join.to_i
-  sortedNumberReverse = sortedNumber.to_s.reverse.to_i
+  sortedNumberReverse = i.to_s.each_char.sort.reverse.join.to_i
   return false if sortedNumber % 10 == sortedNumber / 10**(numDigits - 1)
   if i % 10 == sortedNumber % 10 # this means it's an ascending number
     return (not sortedNumber == i)
