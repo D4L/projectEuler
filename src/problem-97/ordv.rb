@@ -16,6 +16,5 @@ def ordv
       end
     end
   end
-  p large.join.to_i
   (28433 * large.join.to_i + 1)%100000000000
 end
