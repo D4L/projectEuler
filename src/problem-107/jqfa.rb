@@ -74,6 +74,20 @@ class Jqfa1 # this represents the entire matrix
     end
     @edges = temp.edges
   end
+  def discover_local_group i # i must be a point
+    result = Array.new([i])
+    temp = Array.new
+    begin
+      result += temp
+      result.each do |l|
+        temp += connected_to_vertex l
+      end
+      temp.uniq!
+      temp -= result
+    end while temp != []
+    result.uniq!
+    result
+  end
   def connected_to_vertex i # where i is the point
     result = Array.new
     @edges.each do |j|

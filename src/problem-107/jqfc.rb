@@ -59,6 +59,20 @@ class Jqfc1 # this represents the entire matrix
     end
     @edges = buildUp
   end
+  def discover_local_group i # i must be a point
+    result = Array.new([i])
+    temp = Array.new
+    begin
+      result += temp
+      result.each do |l|
+        temp += connected_to_vertex l
+      end
+      temp.uniq!
+      temp -= result
+    end while temp != []
+    result.uniq!
+    result
+  end
   def delete_intertwining i # where i is an array of points
     todelete = Array.new
     @edges.each do |e|
