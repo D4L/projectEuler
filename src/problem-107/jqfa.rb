@@ -1,13 +1,13 @@
 public
 
-# okay, this one is removing  the largest element one at a time and checking if it was vital, this didn't work apparently
-def jqew
+# I'm trying to get the bare necessities and then add the bridges between them
+def jqfa
   counter = 1
-  matrix = Jqew1.new
+  matrix = Jqfa1.new
   File.open("src/problem-107/network").each do |i|
     line = i.strip.split(',')
     (counter..39).each do |i|
-      matrix.push Jqew2.new(line[i].to_i, counter, i + 1) if line[i] != "-" and line[i] != "116"
+      matrix.push Jqfa2.new(line[i].to_i, counter, i + 1) if line[i] != "-" and line[i] != "116"
     end
     counter += 1
   end
@@ -16,7 +16,7 @@ def jqew
   matrix.total
 end
 
-class Jqew1 # this represents the entire matrix
+class Jqfa1 # this represents the entire matrix
   attr_accessor :edges
   def initialize *a
     if a.count == 1
@@ -34,7 +34,7 @@ class Jqew1 # this represents the entire matrix
   def delete i
     @edges.delete i
   end
-  def connected?
+  def connected? # try to not use here
     temp = Array.new
     group = Array.new([@edges.first.loc1])
     while temp.size != group.size
@@ -52,18 +52,8 @@ class Jqew1 # this represents the entire matrix
     end
     temp.count == 40
   end
-  def connected2? # this is an entire 40 peice connected
-    build = Array.new([1])
-    temp = Array.new
-    begin
-      build += temp
-      build.each do |i|
-        temp += connected_to_vertex i
-      end
-      temp -= build
-    end while temp != []
-    build.uniq!
-    build.count == 40
+  def connected2? # this one just checks that all 40 are there
+    (@edges.collect {|i| i.loc1} + @edges.collect{|i| i.loc2}).uniq.count == 40
   end
   def total
     @edges.collect{|i| i.value}.inject(&:+)
@@ -74,8 +64,9 @@ class Jqew1 # this represents the entire matrix
     end
   end
   def minimize
+    # successively delete the largest element and ensure it's still connected
     @edges.sort!{|i,k| i.value <=> k.value}.reverse!
-    temp = Jqew1.new(self)
+    temp = Jqfa1.new(self)
     @edges.each do |e|
       tempedge = temp.delete e
       if not temp.connected2?
@@ -97,7 +88,7 @@ class Jqew1 # this represents the entire matrix
   end
 end
 
-class Jqew2 # this is each edge
+class Jqfa2 # this is each edge
   attr_accessor :value, :loc1, :loc2
   def initialize(i, j, k)
     @value = i
