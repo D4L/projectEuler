@@ -1,13 +1,13 @@
 public
 
-# I'm trying to get the bare necessities and then add the bridges between them
-def jqfa
+# We're gna build our own matrix now! yay, so build and remove old shit
+def jqll
   counter = 1
-  matrix = Jqfa1.new
+  matrix = Jqll1.new
   File.open("src/problem-107/network").each do |i|
     line = i.strip.split(',')
     (counter..39).each do |i|
-      matrix.push Jqfa2.new(line[i].to_i, counter, i + 1) if line[i] != "-" and line[i] != "116"
+      matrix.push Jqll2.new(line[i].to_i, counter, i + 1) if line[i] != "-" and line[i] != "116"
     end
     counter += 1
   end
@@ -16,7 +16,7 @@ def jqfa
   matrix.total
 end
 
-class Jqfa1 # this represents the entire matrix
+class Jqll1 # this represents the entire matrix
   attr_accessor :edges
   def initialize *a
     if a.count == 1
@@ -34,29 +34,11 @@ class Jqfa1 # this represents the entire matrix
   def delete i
     @edges.delete i
   end
-  def connected? # try to not use here
-    temp = Array.new
-    group = Array.new([@edges.first.loc1])
-    while temp.size != group.size
-      group.each do |i|
-        temp += connected_to_vertex i
-      end
-      temp.uniq!
-      temp, group = group, temp
-      bipartite_test = Array.new
-      group.each do |i|
-        bipartite_test += connected_to_vertex i
-      end
-      bipartite_test.uniq!
-      break if temp.size == bipartite_test.size
-    end
-    temp.count == 40
+  def total
+    @edges.collect{|i| i.value}.inject(&:+)
   end
   def connected2? # this one just checks that all 40 are there
     (@edges.collect {|i| i.loc1} + @edges.collect{|i| i.loc2}).uniq.count == 40
-  end
-  def total
-    @edges.collect{|i| i.value}.inject(&:+)
   end
   def connected_points? (i,j)
     if connected_to_vertex(i).include? j
@@ -64,15 +46,29 @@ class Jqfa1 # this represents the entire matrix
     end
   end
   def minimize
-    @edges.sort!{|i,k| i.value <=> k.value}.reverse!
-    temp = Jqfa1.new(self)
+    @edges.sort!{|i,k| i.value <=> k.value}
+    buildUp = Array.new([@edges[1]])
+    containsPoints = Array.new([@edges[1].loc1, @edges[1].loc2])
+    while not @edges.empty?
+      addEdge = @edges.find {|e| containsPoints.include? e.loc1 or containsPoints.include? e.loc2}
+      buildUp.push addEdge
+      containsPoints.push addEdge.loc1
+      containsPoints.push addEdge.loc2
+      containsPoints.uniq!
+      delete_intertwining containsPoints
+    end
+    @edges = buildUp
+  end
+  def delete_intertwining i # where i is an array of points
+    todelete = Array.new
     @edges.each do |e|
-      tempedge = temp.delete e
-      if not temp.connected2?
-        temp.push tempedge
+      if i.include? e.loc1 and i.include? e.loc2
+        todelete.push e
       end
     end
-    @edges = temp.edges
+    todelete.each do |e|
+      @edges.delete e
+    end
   end
   def connected_to_vertex i # where i is the point
     result = Array.new
@@ -87,7 +83,7 @@ class Jqfa1 # this represents the entire matrix
   end
 end
 
-class Jqfa2 # this is each edge
+class Jqll2 # this is each edge
   attr_accessor :value, :loc1, :loc2
   def initialize(i, j, k)
     @value = i

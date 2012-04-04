@@ -1,18 +1,18 @@
 public
 
-# okay, this one is removing  the largest element one at a time and checking if it was vital, this didn't work apparently
+# delete largest and check collected
 def jqew
   counter = 1
   matrix = Jqew1.new
   File.open("src/problem-107/network").each do |i|
     line = i.strip.split(',')
     (counter..39).each do |i|
-      matrix.push Jqew2.new(line[i].to_i, counter, i + 1) if line[i] != "-" and line[i] != "116"
+      matrix.push Jqew2.new(line[i].to_i, counter, i + 1) if line[i] != "-"
     end
     counter += 1
   end
   matrix.minimize
-  p matrix.edges.count
+  p matrix.edges.size
   matrix.total
 end
 
@@ -41,7 +41,9 @@ class Jqew1 # this represents the entire matrix
       group.each do |i|
         temp += connected_to_vertex i
       end
+      #group += temp
       temp.uniq!
+      #group.uniq!
       temp, group = group, temp
       bipartite_test = Array.new
       group.each do |i|
@@ -52,33 +54,29 @@ class Jqew1 # this represents the entire matrix
     end
     temp.count == 40
   end
-  def connected2? # this is an entire 40 peice connected
-    build = Array.new([1])
+  def connected3?
     temp = Array.new
+    group = Array.new([1])
     begin
-      build += temp
-      build.each do |i|
+      group += temp
+      group.each do |i|
         temp += connected_to_vertex i
       end
-      temp -= build
+      temp.uniq!
+      temp -= group
     end while temp != []
-    build.uniq!
-    build.count == 40
+    group.count == 40
   end
   def total
     @edges.collect{|i| i.value}.inject(&:+)
   end
-  def connected_points? (i,j)
-    if connected_to_vertex(i).include? j
-      return @edges.find {|e| (e.loc1 == i and e.loc2 == j) or (e.loc2 == i and e.loc1 == j)}
-    end
-  end
   def minimize
+    # successively delete the largest element and ensure it's still connected
     @edges.sort!{|i,k| i.value <=> k.value}.reverse!
     temp = Jqew1.new(self)
     @edges.each do |e|
       tempedge = temp.delete e
-      if not temp.connected2?
+      if not temp.connected3?
         temp.push tempedge
       end
     end
