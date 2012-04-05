@@ -11,6 +11,7 @@ def jqll
     end
     counter += 1
   end
+  p matrix
   matrix.minimize
   p matrix.edges.count
   matrix.total

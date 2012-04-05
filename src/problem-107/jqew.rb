@@ -11,9 +11,10 @@ def jqew
     end
     counter += 1
   end
+  result = matrix.total
   matrix.minimize
   p matrix.edges.size
-  matrix.total
+  result -= matrix.total
 end
 
 class Jqew1 # this represents the entire matrix
