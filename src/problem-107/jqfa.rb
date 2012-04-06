@@ -7,13 +7,14 @@ def jqfa
   File.open("src/problem-107/network").each do |i|
     line = i.strip.split(',')
     (counter..39).each do |i|
-      matrix.push Jqfa2.new(line[i].to_i, counter, i + 1) if line[i] != "-" and line[i] != "116"
+      matrix.push Jqfa2.new(line[i].to_i, counter, i + 1) if line[i] != "-"
     end
     counter += 1
   end
+  result = matrix.total
   matrix.minimize
-  p matrix.edges.count
-  matrix.total
+  matrix.edges.count
+  result -= matrix.total
 end
 
 class Jqfa1 # this represents the entire matrix
@@ -55,6 +56,19 @@ class Jqfa1 # this represents the entire matrix
   def connected2? # this one just checks that all 40 are there
     (@edges.collect {|i| i.loc1} + @edges.collect{|i| i.loc2}).uniq.count == 40
   end
+  def connected3?
+    temp = Array.new
+    group = Array.new([1])
+    begin
+      group += temp
+      group.each do |i|
+        temp += connected_to_vertex i
+      end
+      temp.uniq!
+      temp -= group
+    end while temp != []
+    group.count == 40
+  end
   def total
     @edges.collect{|i| i.value}.inject(&:+)
   end
@@ -72,6 +86,28 @@ class Jqfa1 # this represents the entire matrix
         temp.push tempedge
       end
     end
+    # we store the full matrix away, and make edges the official one
+    existing_trees = Array.new
+    (1..40).each do |i|
+      if not existing_trees.find {|k| k.include? i}
+        existing_trees.push temp.discover_local_group i
+      end
+    end
+    @edges.reverse!
+    while not temp.connected3?
+      # get the lowest edge between all the trees
+      # add that edge to edges and combine the two trees
+      existing_trees.each do |i|
+        delete_intertwining i
+      end
+      edgeToAdd = @edges.first
+      tree1 = existing_trees.find{|i| i.include? edgeToAdd.loc1}
+      tree2 = existing_trees.find{|i| i.include? edgeToAdd.loc2}
+      temp.push edgeToAdd
+      existing_trees.delete tree1
+      existing_trees.delete tree2
+      existing_trees.push (tree1+tree2)
+    end
     @edges = temp.edges
   end
   def discover_local_group i # i must be a point
@@ -87,6 +123,17 @@ class Jqfa1 # this represents the entire matrix
     end while temp != []
     result.uniq!
     result
+  end
+  def delete_intertwining i # where i is an array of points
+    todelete = Array.new
+    @edges.each do |e|
+      if i.include? e.loc1 and i.include? e.loc2
+        todelete.push e
+      end
+    end
+    todelete.each do |e|
+      @edges.delete e
+    end
   end
   def connected_to_vertex i # where i is the point
     result = Array.new

@@ -7,14 +7,13 @@ def jqll
   File.open("src/problem-107/network").each do |i|
     line = i.strip.split(',')
     (counter..39).each do |i|
-      matrix.push Jqll2.new(line[i].to_i, counter, i + 1) if line[i] != "-" and line[i] != "116"
+      matrix.push Jqll2.new(line[i].to_i, counter, i + 1) if line[i] != "-"
     end
     counter += 1
   end
-  p matrix
+  result = matrix.total
   matrix.minimize
-  p matrix.edges.count
-  matrix.total
+  result -= matrix.total
 end
 
 class Jqll1 # this represents the entire matrix
@@ -48,8 +47,9 @@ class Jqll1 # this represents the entire matrix
   end
   def minimize
     @edges.sort!{|i,k| i.value <=> k.value}
-    buildUp = Array.new([@edges[1]])
-    containsPoints = Array.new([@edges[1].loc1, @edges[1].loc2])
+    buildUp = Array.new([@edges[0]])
+    containsPoints = Array.new([@edges[0].loc1, @edges[0].loc2])
+    delete_intertwining containsPoints
     while not @edges.empty?
       addEdge = @edges.find {|e| containsPoints.include? e.loc1 or containsPoints.include? e.loc2}
       buildUp.push addEdge

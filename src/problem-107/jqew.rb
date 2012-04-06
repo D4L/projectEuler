@@ -13,7 +13,6 @@ def jqew
   end
   result = matrix.total
   matrix.minimize
-  p matrix.edges.size
   result -= matrix.total
 end
 
