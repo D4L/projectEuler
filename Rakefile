@@ -34,6 +34,15 @@ namespace "all" do
   end
 end
 
+desc "Get a number list of all the current problems"
+task :list do
+  result = []
+  Dir.glob("src/problem-*").map{|dir| dir.split('-')[1].to_i}.sort.each do |dir|
+    result.push dir
+  end
+  puts "#{result}\n"
+end
+
 desc "Find some common times to compare against"
 task :time do
   gettime(Proc.new{(1..100).inject(&:+)}) #warm up le functions
