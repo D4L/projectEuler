@@ -3,7 +3,7 @@ $LOAD_PATH << './src'
 Dir.glob("./src/problem-*/*.rb").each do |srcfile|
   require srcfile
 end
-Dir.glob("./lib/*.rb").each do |libfile|
+Dir.glob("./lib/**/*.rb").each do |libfile|
   require libfile
 end
 
