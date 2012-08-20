@@ -1,10 +1,11 @@
 public
 
-def prgy
+# this doesn't work :(
+def prog
+  return 0
   d = 2
   a = 1
   while a >= (15499.0/94744)
-    p d
     d += 1
     temp = 0
     (0..(d-1)).each do |n|
