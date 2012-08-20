@@ -8,6 +8,8 @@ Dir.glob("./lib/**/*.rb").each do |libfile|
 end
 
 require 'testtools'
+require 'net/http'
+
 namespace "all" do
   desc "Compiles every file and returns time taken"
   task :time do

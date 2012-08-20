@@ -40,6 +40,10 @@ module RomanNumeral
       result
     end
 
+    def to_scool
+      Net::HTTP.get_response(URI.parse("http://numbers.0x04.net/roman/#{@number}")).body.split("title")[1].gsub(/[^IVXLCDM]/,'')
+    end
+
     def self.parse number
       result = 0
       prevchar = nil
