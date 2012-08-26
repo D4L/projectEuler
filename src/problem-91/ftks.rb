@@ -12,18 +12,14 @@ def ftks
     result += i / 2 * 2
   end
   # there are some on their little angles
-  (2..(limit - 1)).each do |long|
+  (2..limit).each do |long|
     (1..(long - 1)).each do |tall|
       gcd = intGCDInts long, tall
       longd, talld = long / gcd, tall / gcd
-      long -= talld
-      tall += longd
-      while long >= 0 and tall <= limit
-        long -= talld
-        tall += longd
-        result += 2
-      end
-      long = longd * gcd
+      maxn = ((limit - long) / talld > tall / longd ? tall / longd : (limit - long) / talld)
+      minn = (long / talld > (limit - tall) / longd ? (limit - tall) / longd : long / talld)
+      # p "(#{long}, #{tall}) => (#{longd}, #{talld}) : #{maxn} + #{minn}"
+      result += (maxn + minn) * 2
     end
   end
   result
