@@ -41,4 +41,17 @@ public
 # f(32) = 6
 
 def nine
+  desiredNumber = 10**25
+  mover = arrSumOfPowersOfTwoInt desiredNumber
+  f = 1
+  nummovable = 0
+  prev, curr = -1, 0
+  while not mover.empty?
+    curr = mover.pop
+    tempf = f * (curr - prev) + nummovable
+    tempmovable = f * (curr - prev - 1) + nummovable
+    f, nummovable = tempf, tempmovable
+    prev = curr
+  end
+  f
 end
