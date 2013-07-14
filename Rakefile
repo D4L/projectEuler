@@ -9,6 +9,7 @@ end
 
 require 'testtools'
 require 'net/http'
+require 'csv'
 
 namespace "all" do
   desc "Compiles every file and returns time taken"
